@@ -7,6 +7,7 @@
     "start": "node dist/app.js",
     "build": "tsc",
     "start:dev": "nodemon",
+    "test": "jest",
     "lint": "tsc --noEmit && eslint 'app/**/*.{js,ts}' --quiet --fix"
   },
   "dependencies": {
