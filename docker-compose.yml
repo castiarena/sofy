@@ -7,13 +7,14 @@ services:
       - ./data:/data/db
     ports:
       - "27017:27017"
-  app:
-    container_name: app
+  sofy:
+    container_name: sofy
+    command: ["yarn", "start:dev"]
     restart: always
     build: .
     volumes:
-      - ./app:/usr/src/db-live/app
-      - ./node_modules:/usr/src/db-live/node_modules
+      - ./app:/usr/src/sofy/app
+      - ./node_modules:/usr/src/sofy/node_modules
     ports:
       - "3000:3000"
     depends_on:
