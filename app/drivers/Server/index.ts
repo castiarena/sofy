@@ -1,10 +1,8 @@
 import express, { Application, IRouter } from 'express';
 import socketIO, { Server as SocketIOServer } from 'socket.io';
 import { createServer, Server as HTTPServer } from 'http';
-
-interface IEnvironmentServer {
-    server: IServer;
-}
+import bodyParser from 'body-parser';
+import '../DB';
 
 interface IServer {
     route(path: string, route: IRouter): IServer;
@@ -25,6 +23,13 @@ class Server implements IServer {
         this.app = app;
         this.httpServer = createServer(app);
         this.io = socketIO(this.httpServer);
+
+        this.prepareApp();
+    }
+
+    private prepareApp(){
+        this.app.use(bodyParser.urlencoded({ extended: false }));
+        this.app.use(bodyParser.json());
     }
 
     public route(path: string, route: IRouter): IServer {
@@ -50,7 +55,4 @@ class Server implements IServer {
 
 
 export default Server;
-export {
-    IServer,
-    IEnvironmentServer
-}
+export { IServer };

@@ -13,8 +13,15 @@ const homeRoute = new Routes('/');
 
 // attach handlers
 homeRoute.get('/', (req, res) => {
-    res.json({ status: 'done'});
+    res.json({ status: 'otra cosa'});
 }).route(server);
+
+// attach handlers
+homeRoute.post('/pepe', (req, res) => {
+    res.json({ body: req.body });
+}).route(server);
+
+
 
 // run server
 server.listen(process.env.PORT, 

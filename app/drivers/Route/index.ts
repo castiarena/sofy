@@ -9,13 +9,13 @@ class Route {
         this.router = Router();
     }
 
-    public get(path: string, handler: RequestHandler){
+    public get(path: string, handler: RequestHandler):Route {
         this.router.get(path, handler);
         return this;
     }
 
-    public post(path: string, handler: RequestHandler){
-        this.router.get(path, handler);
+    public post(path: string, handler: RequestHandler): Route{
+        this.router.post(path, handler);
         return this;
     }
 
